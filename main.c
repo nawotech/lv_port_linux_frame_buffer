@@ -7,7 +7,7 @@
 #include <time.h>
 #include <sys/time.h>
 
-#define DISP_BUF_SIZE (480 * 320 * 16)
+#define DISP_BUF_SIZE (480 * 320)
 
 int main(void)
 {
@@ -18,11 +18,12 @@ int main(void)
     fbdev_init();
 
     /*A small buffer for LittlevGL to draw the screen's content*/
-    static lv_color_t buf[DISP_BUF_SIZE];
+    static lv_color_t buf1[DISP_BUF_SIZE];
+    static lv_color_t buf2[DISP_BUF_SIZE];
 
     /*Initialize a descriptor for the buffer*/
     static lv_disp_draw_buf_t disp_buf;
-    lv_disp_draw_buf_init(&disp_buf, buf, NULL, DISP_BUF_SIZE);
+    lv_disp_draw_buf_init(&disp_buf, buf1, buf2, DISP_BUF_SIZE);
 
     /*Initialize and register a display driver*/
     static lv_disp_drv_t disp_drv;
